@@ -63,9 +63,12 @@ console.log(CemberinAlani(15,pi));
 			3c. `ucetambolunenler` dizisindeki sayıların toplamını .reduce metoduyla bulup, sonucu `ucebolunenlerintoplami` değişkenine yazdırın (.reduce metodunu kullanın)
 			3d. `besyuzdenkucuksayilar` adında bir dizi oluşturarak, sayilar dizisinin içindeki 500'den küçük sayıları bu diziye atayın (.filter metodunu kullanın)
 			3e. besyuzdenkucuksayilar dizisindeki sayıları küçükten büyüğe sıralayıp `siralisayilar` adındaki bir diziye aktarın (.sort metodunu kullanın)
-			3f. `tekraredensayilar` adında bir dizi oluşturun. sayilar dizisi içerisindeki bazı sayılar birden fazla kere yazılmış. sayilar dizisi içerisinde birden fazla kez yazılmış sayıları tespit ederek kaç kere tekrar edildiğini belirten bir string oluşturulup `tekraredensayilar` dizisine aktarılmasını istiyoruz. Örnek string: "{sayı} sayısı {tekrarSayisi} kere tekrar edilmiştir"
+			3f. `tekraredensayilar` adında bir dizi oluşturun. sayilar dizisi içerisindeki bazı sayılar birden fazla kere yazılmış. sayilar dizisi içerisinde 
+			birden fazla kez yazılmış sayıları tespit ederek kaç kere tekrar edildiğini belirten bir string oluşturulup `tekraredensayilar` dizisine aktarılmasını 
+			istiyoruz. Örnek string: "{sayı} sayısı {tekrarSayisi} kere tekrar edilmiştir"
 			ÖRNEK: sayilar dizisi içerisinde 45 sayısı 3 kere yazılmış. "45 sayısı 3 tekrar edilmiştir" stringini `tekraredensayilar` dizisine aktaracağız.
-			💡 İPUCU: Tekrar edilen sayıları ve kaç kere tekrar edildiğini kaydetmek için bir nesne tanımlamalısınız, bu görevi yapabilmek için en az 2 kere döngü yazmalısınız. Birinci döngüde hangi sayının kaç kere tekrar edildiğini tespit edip, 2. döngüde stringi oluşturup verilen diziye aktarmalısınız.
+			💡 İPUCU: Tekrar edilen sayıları ve kaç kere tekrar edildiğini kaydetmek için bir nesne tanımlamalısınız, bu görevi yapabilmek için en az 2 kere döngü yazmalısınız. 
+			Birinci döngüde hangi sayının kaç kere tekrar edildiğini tespit edip, 2. döngüde stringi oluşturup verilen diziye aktarmalısınız.
 	*/
 	
 	
@@ -101,23 +104,44 @@ console.log(CemberinAlani(15,pi));
 	//3d çözümü
 	
 	/* kodlar buraya */
-
+	besyuzdenkucuksayilar = sayilar.filter(element => element < 500);
+	console.log(besyuzdenkucuksayilar);
 
 
 	//3e çözümü
 
 	/* kodlar buraya */
-	
-	
+	siralisayilar = besyuzdenkucuksayilar.sort(function(a, b) {
+		return a - b;
+	  });
+	console.log(siralisayilar);
 	//3f çözümü
 	
 	/* kodlar buraya */
+	const sayilarClon = [...sayilar];
+	const tekrarEdenler = [];
+	tekraredensayilar = [];
 
+	while (sayilarClon.length !== 0) {
+	let deger = sayilarClon[0];
+	sayilarClon.shift();		
+			if (sayilarClon.includes(deger) && tekrarEdenler.some(e => e.sayi === deger)) {
+			let index = tekrarEdenler.findIndex(e => e.sayi === deger);
+			tekrarEdenler[index].tekrar += 1;
+			}		
+			else if (sayilarClon.includes(deger)) {
+			tekrarEdenler.push({sayi : deger, tekrar: 2 })
+			}
+	}
 
-
+	tekrarEdenler.forEach(e => tekraredensayilar.push(`${e.sayi} sayısı ${e.tekrar} kere tekrar edilmiştir`));
 
 	
-		
+
+	"{sayı} sayısı {tekrarSayisi} kere tekrar edilmiştir"
+
+	tekraredensayilar
+	"45 sayısı 3 tekrar edilmiştir"	
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa(){
