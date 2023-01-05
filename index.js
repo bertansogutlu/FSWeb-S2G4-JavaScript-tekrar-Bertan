@@ -90,14 +90,13 @@ console.log(CemberinAlani(15,pi));
 	// 3b çözümü:
 
 	/* kodlar buraya */
-		
-		
-		
+	ucetambolunenler = sayilar.filter(element => element%3 === 0);
+	console.log(ucetambolunenler);
 	//3c çözümü:
 	
 	/* kodlar buraya */
-
-	
+	ucebolunenlerintoplami = ucetambolunenler.reduce((total, element) => total + element, 0);
+	console.log(ucebolunenlerintoplami);
 	
 	//3d çözümü
 	
