@@ -118,30 +118,19 @@ console.log(CemberinAlani(15,pi));
 	//3f çözümü
 	
 	/* kodlar buraya */
-	const sayilarClon = [...sayilar];
-	const tekrarEdenler = [];
-	tekraredensayilar = [];
-
-	while (sayilarClon.length !== 0) {
-	let deger = sayilarClon[0];
-	sayilarClon.shift();		
-			if (sayilarClon.includes(deger) && tekrarEdenler.some(e => e.sayi === deger)) {
-			let index = tekrarEdenler.findIndex(e => e.sayi === deger);
-			tekrarEdenler[index].tekrar += 1;
-			}		
-			else if (sayilarClon.includes(deger)) {
-			tekrarEdenler.push({sayi : deger, tekrar: 2 })
-			}
+	const sayilarObj = {}
+	for (let i in sayilar) {
+	let deger = sayilar[i];
+		if (sayilarObj[deger] == undefined) {
+		sayilarObj[deger] = 1;
+		}
+		else {
+		sayilarObj[deger] += 1;
+		}
 	}
-
-	tekrarEdenler.forEach(e => tekraredensayilar.push(`${e.sayi} sayısı ${e.tekrar} kere tekrar edilmiştir`));
-
-	
-
-	"{sayı} sayısı {tekrarSayisi} kere tekrar edilmiştir"
-
-	tekraredensayilar
-	"45 sayısı 3 tekrar edilmiştir"	
+	const sayilarArr = Object.entries(sayilarObj)
+	const tekrarArr = sayilarArr.filter(e => e[1] > 1)
+	tekraredensayilar = tekrarArr.map(e => `${e[0]} sayısı ${e[1]} kere tekrar edilmiştir`)
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa(){
