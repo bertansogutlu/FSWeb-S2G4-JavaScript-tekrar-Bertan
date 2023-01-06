@@ -119,13 +119,12 @@ console.log(CemberinAlani(15,pi));
 	
 	/* kodlar buraya */
 	const sayilarObj = {}
-	for (let i in sayilar) {
-	let deger = sayilar[i];
-		if (sayilarObj[deger] == undefined) {
-		sayilarObj[deger] = 1;
+	for (let sayi of sayilar) {
+		if (sayilarObj[sayi] == undefined) {
+		sayilarObj[sayi] = 1;
 		}
 		else {
-		sayilarObj[deger] += 1;
+		sayilarObj[sayi] += 1;
 		}
 	}
 	const sayilarArr = Object.entries(sayilarObj)
